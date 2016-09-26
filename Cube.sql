@@ -59,3 +59,26 @@ GROUP BY Item, Color WITH CUBE
 GO
 
 select * from InvCube
+
+-- Different number of rows returned (7 and 9): 
+SELECT CASE WHEN (GROUPING(Item) = 1) THEN 'ALL'
+            ELSE ISNULL(Item, 'UNKNOWN')
+       END AS Item,
+       CASE WHEN (GROUPING(Color) = 1) THEN 'ALL'
+            ELSE ISNULL(Color, 'UNKNOWN')
+       END AS Color,
+       SUM(Quantity) AS QtySum
+FROM tbl_cube
+GROUP BY Item, Color WITH ROLLUP
+ORDER BY QtySum
+
+SELECT CASE WHEN (GROUPING(Item) = 1) THEN 'ALL'
+            ELSE ISNULL(Item, 'UNKNOWN')
+       END AS Item,
+       CASE WHEN (GROUPING(Color) = 1) THEN 'ALL'
+            ELSE ISNULL(Color, 'UNKNOWN')
+       END AS Color,
+       SUM(Quantity) AS QtySum
+FROM tbl_cube 
+GROUP BY Item, Color WITH CUBE
+ORDER BY QtySum
