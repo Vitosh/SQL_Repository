@@ -2,4 +2,5 @@ IF OBJECT_ID(N'TestTable', N'U') IS NOT NULL DROP TABLE TestTable;
 IF OBJECT_ID(N'TestSequence', N'SO') IS NOT NULL DROP SEQUENCE TestSequence;
 IF OBJECT_ID (N'TestView', N'V') IS NOT NULL DROP VIEW TestView;
 IF OBJECT_ID (N'TestFunction', N'IF') IS NOT NULL DROP FUNCTION TestFunction;
+IF OBJECT_ID('tempdb..#TestMe') IS NOT NULL DROP TABLE #TestMe;
 GO
