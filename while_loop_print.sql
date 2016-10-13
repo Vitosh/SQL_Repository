@@ -21,3 +21,15 @@ go
 
 IF OBJECT_ID('tempdb..#TestMe') IS NOT NULL 
 	DROP TABLE #TestMe;
+
+-- Second option
+declare @test int;
+set @test = 0;
+
+WHILE 1 = 1
+	BEGIN
+		set @test += 100;
+		print @test;
+		IF @test > 10000
+			BREAK;
+	END
